@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Saint Valentin 💝</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+    font-family:'Poppins',sans-serif;
+}
+
+.container{
+    text-align:center;
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(15px);
+    padding:50px 40px;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    width:90%;
+    max-width:500px;
+}
+
+h1{
+    color:#b8003d;
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+p{
+    margin-bottom:25px;
+    font-size:1.1rem;
+}
+
+textarea{
+    width:100%;
+    height:130px;
+    border-radius:15px;
+    border:none;
+    padding:15px;
+    font-size:1rem;
+    outline:none;
+    resize:none;
+    box-shadow:inset 0 5px 15px rgba(0,0,0,0.1);
+}
+
+button{
+    margin-top:25px;
+    padding:14px 35px;
+    font-size:1rem;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff4d6d,#ff758f);
+    color:white;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>💝 Dis-moi Marvine…</h1>
+    <p>Qu’est-ce que tu veux pour la Saint-Valentin ? 😍</p>
+
+    <textarea placeholder="Écris ici ce que tu aimerais… 🎁🌹💌"></textarea>
+
+    <button onclick="sendChoice()">Envoyer 💖</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+    emailjs.init("h0YFACYZrhUOaE9qD");
+})();
+
+function sendChoice(){
+    const text=document.querySelector("textarea").value;
+
+    if(!text){
+        alert("Écris d’abord ce que tu veux ma Valentine 💕");
+        return;
+    }
+
+    emailjs.send("service_kh4hhbc","template_iayrvsd",{
+        message:text
+    }).then(function(response){
+        alert("Message envoyé avec succès 💌 bisous mon filso 😘");
+    },function(error){
+        alert("Oups… erreur lors de l’envoi 😅");
+    });
+}
+</script>
+
+</body>
+</html>
